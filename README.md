@@ -54,11 +54,20 @@ SELECT avg(f.length) FROM film f )
 
 Решение 3.
 
-SELECT sum(p.amount),count(p.payment_id) FROM payment p
+SELECT extract(month from p.payment_date) as 'Month' ,
 
-GROUP BY EXTRACT(MONTH FROM p.payment_date)
+sum(p.amount) as 'Sum' ,
 
-ORDER BY sum(p.amount) desc limit 1
+count(p.payment_id) as 'Count'
+
+FROM payment p
+
+GROUP by EXTRACT(month from p.payment_date)
+
+ORDER by SUM(p.amount) desc limit 1
 
 
-![alt text](https://github.com/mezhibo/SQL2/blob/7c432ae6edf4cde9a14c7cc2a1200d476cd6da45/IMG/3.jpg)
+
+
+
+![alt text](https://github.com/mezhibo/SQL2/blob/39b110294461d016f659977ebe4c800e8ef9efbc/IMG/33.jpg)
